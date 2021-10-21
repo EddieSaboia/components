@@ -16,7 +16,7 @@ const Carousel = (props) => {
   const [nextSlide, setNextSlide] = useState(0);
 
   const classes = createStyles(props);
-  const slides = props.courses.length;
+  const slides = props.array.length;
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
   useEffect(() => {
@@ -145,11 +145,11 @@ const Carousel = (props) => {
           <div
             className={classes.tray}
             style={{
-              width: ((props.courses.length / visibleSlides) * 100).toString() + '%',
+              width: ((props.array.length / visibleSlides) * 100).toString() + '%',
               transition: transition
             }}
           >
-            {props.courses.map((course, index) => {
+            {props.array.map((item, index) => {
               return (
                 // se precisar de onClick : onClick={() => { } }
                 <div className={classes.slide} key={id}>
@@ -164,7 +164,7 @@ const Carousel = (props) => {
 
         {isMobile && <div className={classes.dotIndicatorsContainer}>{renderDotIndicators()}</div>}
 
-        {props.showAllBtn && props.courses.size > 3 ? (
+        {props.showAllBtn && props.array.size > 3 ? (
           <div className={classes.showAllBtn}>{props.showAllBtn}</div>
         ) : null}
       </div>
